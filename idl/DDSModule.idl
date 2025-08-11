@@ -1,0 +1,100 @@
+module DDSModule
+{
+    @extensibility(FINAL)
+    struct Buffer64
+    {
+        @key
+        unsigned long session;
+        unsigned long payload_sz;
+        octet payload[64];
+    };
+
+    @extensibility(FINAL)
+    struct Buffer256
+    {
+        @key
+        unsigned long session;
+        unsigned long payload_sz;
+        octet payload[256];
+    };
+
+    @extensibility(FINAL)
+    struct Buffer512
+    {
+        @key
+        unsigned long session;
+        unsigned long payload_sz;
+        octet payload[512];
+    };
+
+    @extensibility(FINAL)
+    struct Buffer1024
+    {
+        @key
+        unsigned long session;
+        unsigned long payload_sz;
+        octet payload[1024];
+    };
+
+    @extensibility(FINAL)
+    struct Buffer4096
+    {
+        @key
+        unsigned long session;
+        unsigned long payload_sz;
+        octet payload[4096];
+    };
+
+    @extensibility(FINAL)
+    struct Buffer10k
+    {
+        @key
+        unsigned long session;
+        unsigned long payload_sz;
+        octet payload[10240];
+    };
+
+    @extensibility(FINAL)
+    struct Buffer100k
+    {
+        @key
+        unsigned long session;
+        unsigned long payload_sz;
+        octet payload[102400];
+    };
+
+    @extensibility(FINAL)
+    struct Buffer1M
+    {
+        @key
+        unsigned long session;
+        unsigned long payload_sz;
+        octet payload[1048576];
+    };
+
+    @extensibility(FINAL)
+    struct Buffer4M
+    {
+        @key
+        unsigned long session;
+        unsigned long payload_sz;
+        octet payload[4194304];
+    };
+
+    @extensibility(FINAL)
+    struct Buffer8M
+    {
+        @key
+        unsigned long session;
+        unsigned long payload_sz;
+        octet payload[8388608];
+    };
+
+    @extensibility(FINAL)
+    struct BufferU
+    {
+        @key
+        unsigned long session;
+        sequence<octet> payload;
+    };
+};

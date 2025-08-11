@@ -96,18 +96,18 @@ typedef struct DDS_DATA_INFO
     uint32_t sample_rank;
     uint32_t generation_rank;
     uint32_t absolute_generation_rank;
-}DDS_DATA_INFO_t
+}DDS_DATA_INFO_t;
 
 typedef struct DDSPubConf
 {
     bool wait_connect;
     int wait_max_time;
     bool skip_pub_ifnotconnect;
-}DDSPubConf_t
+}DDSPubConf_t;
 
 typedef enum DDS_FRAME_SIZE
 {
-    DDS_FRAME_SIZE_ULIMITED = 0;
+    DDS_FRAME_SIZE_ULIMITED = 0,
     DDS_FRAME_SIZE_64B,
     DDS_FRAME_SIZE_256B,
     DDS_FRAME_SIZE_512B,
@@ -128,15 +128,57 @@ static inline bool is_valid_shm_size(DDS_FRAME_SIZE fsize)
 typedef void (*dds_callback_handler)(void *dataptr, uint32_t data_len, uint32_t sessionid);
 typedef void (*dds_callback_handler_allinfo)(DDSEntity_t topic, const char * topic_n, void *dataptr, uint32_t data_len, void *args, DDS_DATA_INFO_t *datainfos);
 
-
+/* CycloneDDS retcode */
 #define DDS_RET_OK (0)
 #define DDS_RET_ERROR (-1)
 #define DDS_RET_UNSUPPORTED (-2)
 #define DDS_RET_BAD_PARAMETER (-3)
+#define DDS_RET_PRECONDITION_NOT_MET (-4)
+#define DDS_RET_OUT_OF_RESOURECES (-5)
+#define DDS_RET_NOT_ENABLED (-6)
+#define DDS_RET_IMMUTABLE_POLICY (-7)
+#define DDS_RET_INCONSISTENT_POLICY (-8)
+#define DDS_RET_ALREADY_DELETED (-9)
+#define DDS_RET_TIMEOUT (-10)
+#define DDS_RET_NO_DATA (-11)
+#define DDS_RET_ILLEGAL_OPERATION (-12)
+#define DDS_RET_NOT_ALLOWED_BY_SECURITY (-13)
+#define DDS_RET_IN_PROGRESS (-51)
+#define DDS_RET_TRY_AGAIN (-52)
+#define DDS_RET_INTERRUPTED (-53)
+#define DDS_RET_NOT_ALLOWED (-54)
+#define DDS_RET_HOST_NOT_FOUND (-55)
+#define DDS_RET_NO_NETWORK (-56)
+#define DDS_RET_NO_CONNECTION (-57)
+#define DDS_RET_NOT_ENOUGH_SPACE (-58)
+#define DDS_RET_OUT_OF_RANGE (-59)
+#define DDS_RET_NOT_FOUND (-60)
 
 
+/* ddsm extend retcode */
+#define DDS_RET_DDS_NOT_INIT (-61)
+#define DDS_RET_XML_FILE_ERROR (-62)
+#define DDS_RET_XML_FILE_TOPIC_NAME_UNDEFINE (-63)
+#define DDS_RET_DUP_TOPICS (-64)
+#define DDS_RET_TOPICNAME_ISNUMERIC (-65)
+#define DDS_RET_IOX_NOT_WORKING (-66)
+#define DDS_RET_CONFIG_SHM_INVALID (-67)
+#define DDS_RET_QOS_SHM_INVALID (-68)
 
+typedef enum DDSLogLevel
+{
+    DDSLogLevelOff = 0x0,
+    DDSLogLevelErr = 0x1,
+    DDSLogLevelWarn = 0x2,
+    DDSLogLevelDebug = 0x3,
+    DDSLogLevelTrace = 0x4,
+}DDSLogLevel;
 
+typedef struct DDSMVersionInfo
+{
+    char proj_version[16];
+    char build_version[16];
+}DDSMVersionInfo;
 
 
 #ifdef __cplusplus
